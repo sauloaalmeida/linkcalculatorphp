@@ -5,6 +5,7 @@ include 'Portal.php';
 $portal = null;
 
 try {
+    
     $portal = new Portal($_POST["portal_setup"]);
     
     echo $portal->getLinkRangeInMeters() . " m";
@@ -16,7 +17,7 @@ try {
     //Error Handling
     switch ($e->getMessage()) {
         case Portal::EXCEPTION_INVALID_PORTAL_SETUP:
-            echo "Invalid portal setup. Correct is: bla bla bla";
+            echo "Invalid portal setup. Correct format is: 87665544 1 ULA 1 LA";
             break;
         case Portal::EXCEPTION_INVALID_AMOUNT_OF_MODS:
             echo "We only have four slots for MODs";

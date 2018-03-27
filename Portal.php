@@ -182,12 +182,22 @@ class Portal{
         return $multiplierResult;
     }
     
-    public  function getLinkRangeInMeters(){        
+    private function calculateLinkRangeInMeters(){
         return $this->getMultiplierValueForMods() * $this->getLinkRangeForPortalLevelOnly(); 
+    }
+    
+    private function calculateLinkRangeInKilometers(){
+        return $this->calculateLinkRangeInMeters() / 1000;
+    }
+    
+    
+    
+    public  function getLinkRangeInMeters(){        
+        return number_format($this->calculateLinkRangeInMeters(), 2, ".", "");
     }
     
     
     public  function getLinkRangeInKilometers(){
-        return $this->getLinkRangeInMeters() / 1000;
+        return number_format($this->calculateLinkRangeInKilometers(), 2, ".", "");
     }
 }
